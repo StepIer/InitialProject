@@ -20,4 +20,7 @@ dependencyResolutionManagement {
 rootProject.name = "InitialProject"
 
 include(":app")
-include("feature:sampleFeature")
+include(":feature:sampleFeature")
+include(":core:presentation")
+include(":core:network")
+include(":core:database")

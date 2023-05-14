@@ -38,7 +38,6 @@ android {
     buildFeatures {
         compose = true
     }
-
     composeOptions {
         kotlinCompilerExtensionVersion = Dependencies.Compose.compilerVersion
     }
@@ -58,14 +57,15 @@ android {
 
 dependencies {
 
+    implementation(project(Module.Feature.sampleFeature))
+
     implementation(Dependencies.Android.coreKtx)
     implementation(Dependencies.Android.lifecycle)
     implementation(Dependencies.Compose.material)
     implementation(Dependencies.Compose.activity)
     implementation(Dependencies.Compose.ui)
     implementation(Dependencies.Compose.preview)
-
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+    implementation(Dependencies.Compose.viewModel)
 
     implementation(Dependencies.Hilt.android)
     implementation(Dependencies.Hilt.composeNavigation)

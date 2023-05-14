@@ -4,6 +4,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -35,6 +36,10 @@ android {
         kotlinCompilerExtensionVersion = Dependencies.Compose.compilerVersion
     }
 
+    buildFeatures {
+        compose = true
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -42,12 +47,28 @@ android {
 
 dependencies {
 
+    implementation(project(Module.Core.presentation))
+    implementation(project(Module.Core.database))
+    implementation(project(Module.Core.network))
+
     implementation(Dependencies.Android.coreKtx)
     implementation(Dependencies.Android.lifecycle)
+
     implementation(Dependencies.Compose.material)
     implementation(Dependencies.Compose.activity)
     implementation(Dependencies.Compose.ui)
     implementation(Dependencies.Compose.preview)
+    implementation(Dependencies.Compose.navigation)
+
+    implementation(Dependencies.Hilt.android)
+    implementation(Dependencies.Hilt.composeNavigation)
+
+    kapt(Dependencies.Hilt.compiler)
+    kapt(Dependencies.Hilt.androidCompiler)
+
+    implementation(Dependencies.OrbitMVI.compose)
+    implementation(Dependencies.OrbitMVI.viewModel)
+    implementation(Dependencies.OrbitMVI.core)
 
     debugImplementation(Dependencies.Compose.debugUi)
     debugImplementation(Dependencies.Compose.debugManifest)
